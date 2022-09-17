@@ -52,7 +52,7 @@ $(document).ready(function()    {
                 segundoNumero = cambiarSigno(segundoNumero);
                 updateResultado(segundoNumero);
             }
-        }   else if (e.target.innerText == 'C') {
+        } else if (e.target.innerText == 'C') {
             if (!opSeleccionado) {
                 primerNumero = '0';
                 updateResultado(primerNumero);
@@ -60,27 +60,25 @@ $(document).ready(function()    {
                 segundoNumero = '0';
                 updateResultado(segundoNumero);
             }
-        } else if (isNaN(e.target.innerText) && e.target.innerText != '=' && e.target.innerText != ',' && e.target.innerText != '+/-' && e.target.innerText != 'C') {
-            if (e.target.innerText == 'AC') {
-                primerNumero = '0';
-                segundoNumero = '0';
-                opSeleccionado = undefined;
-                updateResultado(primerNumero);
-            } else {
-                opSeleccionado = e.target.innerText;
-                updateResultado('0');
-            }
+        } else if (e.target.innerText == 'AC') {
+            primerNumero = '0';
+            segundoNumero = '0';
+            opSeleccionado = undefined;
+            updateResultado(primerNumero);
+        } else if (e.target.innerText == '=') {
+            primerNumero = (opSeleccionado ? String(hacerOperacion[opSeleccionado](primerNumero, segundoNumero)).replace('.', ',') : primerNumero);
+            segundoNumero = '0';
+            opSeleccionado = undefined;
+            updateResultado(primerNumero);
+        } else if (isNaN(e.target.innerText)) {
+            opSeleccionado = e.target.innerText;
+            updateResultado(segundoNumero);
         } else {
             if (primerNumero == '0') {
                 primerNumero = e.target.innerText;
                 updateResultado(primerNumero);
             } else if (opSeleccionado == undefined && e.target.innerText != '=') {
                 primerNumero = primerNumero + (+e.target.innerText);
-                updateResultado(primerNumero);
-            } else if (e.target.innerText == '=') {
-                primerNumero = (opSeleccionado ? String(hacerOperacion[opSeleccionado](primerNumero, segundoNumero)).replace('.', ',') : primerNumero);
-                segundoNumero = '0';
-                opSeleccionado = undefined;
                 updateResultado(primerNumero);
             } else if (!isNaN(e.target.innerText)) {
                 segundoNumero = (segundoNumero == '0' ? e.target.innerText : segundoNumero + (+e.target.innerText));
