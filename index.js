@@ -75,7 +75,7 @@ $(document).ready(function()    {
             updateResultado(segundoNumero);
         } else {
             if (opSeleccionado == undefined) {
-                primerNumero = (primerNumero = '0' ? e.target.innerText : primerNumero + (+e.target.innerText));
+                primerNumero = (primerNumero == '0' ? e.target.innerText : primerNumero + (+e.target.innerText));
                 updateResultado(primerNumero);
             } else {
                 segundoNumero = (segundoNumero == '0' ? e.target.innerText : segundoNumero + (+e.target.innerText));
