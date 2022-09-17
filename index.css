@@ -1,0 +1,47 @@
+body
+{
+    font-family: 'Helvetica', 'Arial', sans-serif !important;
+}
+
+.container {
+    width: 60% !important;
+}
+
+@media screen and (max-width:455px)
+{
+    .container {
+        width: 80% !important;
+    }
+}
+
+.resultado {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calc-button {
+    width: 3.4rem;
+    height: 3.4rem;
+}
+
+.op-button {
+    background-color: #F69906;
+}
+
+.number-btn {
+    background-color: #313131;
+}
+
+body.modal-open .modal {
+    display: flex !important;
+    height: 100%;
+} 
+
+.modal-header {
+    border-bottom: solid 1px #F69906 !important;
+}
+
+body.modal-open .modal .modal-dialog {
+    margin: auto;
+}
