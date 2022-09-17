@@ -74,13 +74,10 @@ $(document).ready(function()    {
             opSeleccionado = e.target.innerText;
             updateResultado(segundoNumero);
         } else {
-            if (primerNumero == '0') {
-                primerNumero = e.target.innerText;
+            } if (opSeleccionado == undefined) {
+                primerNumero = (primerNumero = '0' ? e.target.innerText : primerNumero + (+e.target.innerText));
                 updateResultado(primerNumero);
-            } else if (opSeleccionado == undefined && e.target.innerText != '=') {
-                primerNumero = primerNumero + (+e.target.innerText);
-                updateResultado(primerNumero);
-            } else if (!isNaN(e.target.innerText)) {
+            } else {
                 segundoNumero = (segundoNumero == '0' ? e.target.innerText : segundoNumero + (+e.target.innerText));
                 updateResultado(segundoNumero);
             }
