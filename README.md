@@ -3,6 +3,7 @@
 
   <p align="center">
     Basic Calculator built with HTML, Bootstrap & JQuery. UI inspired by the classic iphone calculator.
+    This is and old university project. It doesn't reflect the state of my actual coding.
     <br />
     <br />
     <a href="https://agonzale110.github.io/CalculadoraGrafica/">View Demo</a>
