@@ -1,5 +1,5 @@
 <div align="center">
-  <h3 align="center">Iphone like Calculator</h3>
+  <h3 align="center">Basic Calculator</h3>
 
   <p align="center">
     Graphic Calculator done with HTML, Bootstrap & JQuery. UI inspired by the classic iphone calculator.
@@ -14,7 +14,7 @@
 ## About The Project
 
 (![image](https://user-images.githubusercontent.com/112128428/190885897-66d019b4-ec62-4590-b327-7c31375aa92d.png))
-<p>Calculator done with HTML, Bootstrap & JQuery. UI inspired in the classic iphone calculator.</p>
+<p>Calculator done with HTML, Bootstrap & JQuery. UI inspired by the classic iphone calculator.</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
