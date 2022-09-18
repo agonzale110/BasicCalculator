@@ -16,8 +16,6 @@
 (![image](https://user-images.githubusercontent.com/112128428/190885897-66d019b4-ec62-4590-b327-7c31375aa92d.png))
 <p>Calculator done with HTML, Bootstrap & JQuery. UI inspired by the classic iphone calculator.</p>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -25,7 +23,6 @@
 * [![HTML5][HTML5]][HTML5-url]
 * [![Bootstrap][Bootstrap]][Bootstrap-url]
 * [![JQuery][JQuery]][JQuery-url]
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
