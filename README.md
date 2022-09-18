@@ -2,7 +2,7 @@
   <h3 align="center">Basic Calculator</h3>
 
   <p align="center">
-    Graphic Calculator done with HTML, Bootstrap & JQuery. UI inspired by the classic iphone calculator.
+    Basic Calculator built with HTML, Bootstrap & JQuery. UI inspired by the classic iphone calculator.
     <br />
     <br />
     <a href="https://agonzale110.github.io/CalculadoraGrafica/">View Demo</a>
