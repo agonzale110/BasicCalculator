@@ -32,10 +32,16 @@ $(document).ready(function()    {
     $( "button" ).click(function(e) {
         if (e.target.innerText == ',') {
             if (!opSeleccionado) {
-                primerNumero = primerNumero+',';
+                if (primerNumero.includes(','))
+                    return;
+
+                primerNumero +=',';
                 updateResultado(primerNumero);
             } else {
-                segundoNumero = segundoNumero+',';
+                if (segundoNumero.includes(','))
+                    return;
+
+                segundoNumero += ',';
                 updateResultado(segundoNumero);
             }
         } else if (e.target.innerText == '+/-') {

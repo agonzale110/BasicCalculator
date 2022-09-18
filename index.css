@@ -1,9 +1,13 @@
+html {
+    zoom: 130%;
+}
+
 body
 {
     font-family: 'Helvetica', 'Arial', sans-serif !important;
 }
 
-.container {
+/* .container {
     width: 60% !important;
 }
 
@@ -12,7 +16,7 @@ body
     .container {
         width: 80% !important;
     }
-}
+} */
 
 .resultado {
   white-space: nowrap;
@@ -20,9 +24,15 @@ body
   text-overflow: ellipsis;
 }
 
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
 .calc-button {
     width: 3.4rem;
     height: 3.4rem;
+    border: none;
 }
 
 .op-button {
@@ -33,10 +43,20 @@ body
     background-color: #313131;
 }
 
+.calc-button:active {
+    opacity: 1;
+    transition: 20ms ease-in-out;
+    background-color: gray !important;
+}
+
 body.modal-open .modal {
     display: flex !important;
     height: 100%;
 } 
+
+.modal-body {
+    padding: 0 !important;
+}
 
 .modal-header {
     border-bottom: solid 1px #F69906 !important;
