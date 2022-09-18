@@ -13,7 +13,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-(![image](https://user-images.githubusercontent.com/112128428/190885897-66d019b4-ec62-4590-b327-7c31375aa92d.png))
+![image](https://user-images.githubusercontent.com/112128428/190890206-1d18cc5d-a480-4b7b-83d8-91cd9702d8eb.png)
 <p>Calculator done with HTML, Bootstrap & JQuery. UI inspired by the classic iphone calculator.</p>
 
 
