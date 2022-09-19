@@ -22,20 +22,20 @@ $(document).ready(function()    {
                 this.firstNumber = newNumber;
         },
         addToActualNumber: function(numberToAdd) {
-            const actualNumber = this.getActualNumber();
+            let actualNumber = this.getActualNumber();
             this.setActualNumber(actualNumber == '0' ? numberToAdd : actualNumber + (+numberToAdd));
         },
         setOperation: function(newOp) {
             this.operation = newOp;
         },
         changeSign: function() {
-            const actualNumber = this.getActualNumber();
+            let actualNumber = this.getActualNumber();
             if (actualNumber == '0') return;
             
             this.setActualNumber(actualNumber.includes('-') ? actualNumber.replace('-', '') : '-'+actualNumber);
         },
         addComma: function() {
-            const actualNumber = this.getActualNumber();
+            let actualNumber = this.getActualNumber();
             if (actualNumber.includes(',')) return;
 
             this.setActualNumber(actualNumber += ',');
@@ -66,28 +66,28 @@ $(document).ready(function()    {
     $( "button" ).click(function(e) {
         switch (e.target.innerText) {
             case ',':
-                calculator.addComma();
+                calculatorApp.addComma();
                 break;
             case '+/-':
-                calculator.changeSign();
+                calculatorApp.changeSign();
                 break;
             case 'C':
-                calculator.setActualNumber('0');
+                calculatorApp.setActualNumber('0');
                 break;
             case 'AC':
-                calculator.resetCalc();
+                calculatorApp.resetCalc();
                 break;
             case '=':
-                calculator.doOperation();
+                calculatorApp.doOperation();
                 break;
             default:
                 if (isNaN(e.target.innerText)) {
-                    calculator.setOperation(e.target.innerText);
+                    calculatorApp.setOperation(e.target.innerText);
                     return;
                 }
-                calculator.addToActualNumber(e.target.innerText);
+                calculatorApp.addToActualNumber(e.target.innerText);
                 break;
         }
-        updateResultado(calculator.getActualNumber());
+        updateResultado(calculatorApp.getActualNumber());
     });
 });
