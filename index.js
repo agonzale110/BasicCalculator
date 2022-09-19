@@ -6,23 +6,57 @@ $(document).ready(function()    {
         return false;
     });
 
-    let primerNumero = '0', segundoNumero = '0';
-    let opSeleccionado;
+    const calculatorApp = {
+        firstNumber: 0,
+        secondNumber: 0,
+        operation: undefined,
 
-    const hacerOperacion = {
-        '+': function (x, y) { return (+x.replace(',', '.')) + (+y.replace(',', '.')) },
-        '-': function (x, y) { return (+x.replace(',', '.')) - (+y.replace(',', '.')) },
-        'x': function (x, y) { return (+x.replace(',', '.')) * (+y.replace(',', '.')) },
-        '÷': function (x, y) { return (+x.replace(',', '.')) / (+y.replace(',', '.')) },
-    };
-    
-    const cambiarSigno = (numero) => {
-        if (numero.includes('-')) {
-            return numero.replace('-', '');
-        } else {
-            return '-'+numero;
+        getActualNumber: function() {
+            if (this.operation) return this.secondNumber;
+            return this.firstNumber;
+        },
+        setActualNumber: function(newNumber) {
+            if (this.operation)
+                this.secondNumber = newNumber;
+            else
+                this.firstNumber = newNumber;
+        },
+        addToActualNumber: function(numberToAdd) {
+            const actualNumber = this.getActualNumber();
+            this.setActualNumber(actualNumber == '0' ? numberToAdd : actualNumber + (+numberToAdd));
+        },
+        setOperation: function(newOp) {
+            this.operation = newOp;
+        },
+        changeSign: function() {
+            const actualNumber = this.getActualNumber();
+            if (actualNumber == '0') return;
+            
+            this.setActualNumber(actualNumber.includes('-') ? actualNumber.replace('-', '') : '-'+actualNumber);
+        },
+        addComma: function() {
+            const actualNumber = this.getActualNumber();
+            if (actualNumber.includes(',')) return;
+
+            this.setActualNumber(actualNumber += ',');
+        },
+        resetCalc: function() {
+            this.firstNumber = '0';
+            this.secondNumber = '0';
+            this.operation = undefined;
+        },
+        operations: {
+            '+': function (x, y) { return (+x.replace(',', '.')) + (+y.replace(',', '.')) },
+            '-': function (x, y) { return (+x.replace(',', '.')) - (+y.replace(',', '.')) },
+            'x': function (x, y) { return (+x.replace(',', '.')) * (+y.replace(',', '.')) },
+            '÷': function (x, y) { return (+x.replace(',', '.')) / (+y.replace(',', '.')) },
+        },
+        doOperation: function() {
+            this.firstNumber = (this.operation ? String(this.operations[this.operation](this.firstNumber, this.secondNumber)).replace('.', ',') : this.firstNumber);
+            this.secondNumber = '0';
+            this.operation = undefined;
         }
-    }
+    };
 
     const updateResultado = (valor) => {
         $('#resultado').attr("title",valor);
@@ -30,63 +64,30 @@ $(document).ready(function()    {
     }
 
     $( "button" ).click(function(e) {
-        if (e.target.innerText == ',') {
-            if (!opSeleccionado) {
-                if (primerNumero.includes(','))
+        switch (e.target.innerText) {
+            case ',':
+                calculator.addComma();
+                break;
+            case '+/-':
+                calculator.changeSign();
+                break;
+            case 'C':
+                calculator.setActualNumber('0');
+                break;
+            case 'AC':
+                calculator.resetCalc();
+                break;
+            case '=':
+                calculator.doOperation();
+                break;
+            default:
+                if (isNaN(e.target.innerText)) {
+                    calculator.setOperation(e.target.innerText);
                     return;
-
-                primerNumero +=',';
-                updateResultado(primerNumero);
-            } else {
-                if (segundoNumero.includes(','))
-                    return;
-
-                segundoNumero += ',';
-                updateResultado(segundoNumero);
-            }
-        } else if (e.target.innerText == '+/-') {
-            if (!opSeleccionado) {
-                if (primerNumero == '0')
-                    return
-
-                primerNumero = cambiarSigno(primerNumero);
-                updateResultado(primerNumero);
-            } else {
-                if (segundoNumero == '0')
-                    return
-
-                segundoNumero = cambiarSigno(segundoNumero);
-                updateResultado(segundoNumero);
-            }
-        } else if (e.target.innerText == 'C') {
-            if (!opSeleccionado) {
-                primerNumero = '0';
-                updateResultado(primerNumero);
-            } else {
-                segundoNumero = '0';
-                updateResultado(segundoNumero);
-            }
-        } else if (e.target.innerText == 'AC') {
-            primerNumero = '0';
-            segundoNumero = '0';
-            opSeleccionado = undefined;
-            updateResultado(primerNumero);
-        } else if (e.target.innerText == '=') {
-            primerNumero = (opSeleccionado ? String(hacerOperacion[opSeleccionado](primerNumero, segundoNumero)).replace('.', ',') : primerNumero);
-            segundoNumero = '0';
-            opSeleccionado = undefined;
-            updateResultado(primerNumero);
-        } else if (isNaN(e.target.innerText)) {
-            opSeleccionado = e.target.innerText;
-            updateResultado(segundoNumero);
-        } else {
-            if (opSeleccionado == undefined) {
-                primerNumero = (primerNumero == '0' ? e.target.innerText : primerNumero + (+e.target.innerText));
-                updateResultado(primerNumero);
-            } else {
-                segundoNumero = (segundoNumero == '0' ? e.target.innerText : segundoNumero + (+e.target.innerText));
-                updateResultado(segundoNumero);
-            }
+                }
+                calculator.addToActualNumber(e.target.innerText);
+                break;
         }
+        updateResultado(calculator.getActualNumber());
     });
 });
