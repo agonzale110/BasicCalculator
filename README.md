@@ -6,7 +6,7 @@
     This is an old university project. It doesn't reflect the state of my current coding.
     <br />
     <br />
-    <a href="https://agonzale110.github.io/CalculadoraGrafica/">View Demo</a>
+    <a href="https://agonzale110.github.io/BasicCalculator/">View Demo</a>
   </p>
 </div>
 
