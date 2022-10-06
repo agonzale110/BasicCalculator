@@ -44,6 +44,7 @@ $(document).ready(function()    {
             this.firstNumber = '0';
             this.secondNumber = '0';
             this.operation = undefined;
+            this.updateHistory('');
         },
         operations: {
             '+': function (x, y) { return (+x.replace(',', '.')) + (+y.replace(',', '.')) },
@@ -52,9 +53,19 @@ $(document).ready(function()    {
             '÷': function (x, y) { return (+x.replace(',', '.')) / (+y.replace(',', '.')) },
         },
         doOperation: function() {
+            if (this.operation == undefined) return;
+
+            let opStr = this.firstNumber+' '+this.operation+' '+this.secondNumber;
             this.firstNumber = (this.operation ? String(this.operations[this.operation](this.firstNumber, this.secondNumber)).replace('.', ',') : this.firstNumber);
             this.secondNumber = '0';
             this.operation = undefined;
+            this.addToHistory(opStr+' = '+this.firstNumber)
+        },
+        updateHistory: function(newHistory) {
+            $('#lista')[0].innerHTML = newHistory;
+        },
+        addToHistory: function(op) {
+            $('#lista')[0].innerHTML = $('#lista')[0].innerHTML+'<li>'+op+'</li>';
         }
     };
 
